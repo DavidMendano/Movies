@@ -48,6 +48,7 @@ android {
 
 dependencies {
     implementation project(":home:home_ui")
+    implementation project(":common:common_ui")
 
     implementation AndroidX.androidx_core
     implementation AndroidX.androidx_lifecycle

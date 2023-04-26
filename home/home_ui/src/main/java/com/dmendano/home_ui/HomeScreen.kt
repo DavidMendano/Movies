@@ -7,3 +7,13 @@ import androidx.compose.runtime.Composable
 fun HomeScreen() {
     Text("Home screen")
 }
+
+@Composable
+fun FavouritesScreen() {
+    Text("Favourites screen")
+}
+
+@Composable
+fun SettingsScreen() {
+    Text("Settings screen")
+}
