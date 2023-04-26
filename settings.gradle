@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Movies"
 include ':app'
+include ':home:home_ui'
+include ':home:home_data'
+include ':home:home_domain'
+include ':common:common_ui'
