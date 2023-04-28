@@ -1,1 +1,0 @@
-/Users/david_2/AndroidStudioProjects/Movies/buildSrc/build/classes/kotlin/main/AndroidX.class:/Users/david_2/AndroidStudioProjects/Movies/buildSrc/build/classes/kotlin/main/Compose.class:/Users/david_2/AndroidStudioProjects/Movies/buildSrc/build/classes/kotlin/main/Versions.class
