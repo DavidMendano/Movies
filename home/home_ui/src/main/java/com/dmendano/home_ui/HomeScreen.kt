@@ -14,6 +14,6 @@ fun FavouritesScreen() {
 }
 
 @Composable
-fun SettingsScreen() {
-    Text("Settings screen")
+fun SearchScreen() {
+    Text("Search screen")
 }
