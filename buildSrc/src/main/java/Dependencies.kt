@@ -1,21 +1,44 @@
-object Versions {
-    const val androidx_core= "1.10.0"
-    const val androidx_lifecycle= "2.6.1"
-    const val androidx_activity= "1.7.1"
+package com.dmendano.com.buildsrc
 
-    const val compose_ui = "1.4.2"
-    const val compose_navigation = "2.5.3"
-}
+object Libs {
+    object AndroidX {
+        private const val core_version = "1.10.0"
 
-object AndroidX {
-    const val androidx_core= "androidx.core:core-ktx:${Versions.androidx_core}"
-    const val androidx_lifecycle= "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidx_lifecycle}"
-    const val androidx_activity= "androidx.activity:activity-compose:${Versions.androidx_activity}"
-}
+        const val androidx_core = "androidx.core:core-ktx:${core_version}"
+        object Activity {
+            private const val version = "1.7.1"
 
-object Compose {
-    const val compose_ui = "androidx.compose.ui:ui:${Versions.compose_ui}"
-    const val compose_ui_tooling = "androidx.compose.ui:ui-tooling-preview:${Versions.compose_ui}"
-    const val compose_material = "androidx.compose.material:material:${Versions.compose_ui}"
-    const val compose_navigation = "androidx.navigation:navigation-compose:${Versions.compose_navigation}"
+            const val activity = "androidx.activity:activity-compose:${version}"
+        }
+
+        object Lifecycle {
+            private const val version = "2.6.1"
+
+            const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+            const val lifecycle =  "androidx.lifecycle:lifecycle-runtime-ktx:${version}"
+        }
+
+        object Compose {
+            private const val ui_version = "1.4.2"
+            private const val navigation_version = "2.5.3"
+
+            const val ui = "androidx.compose.ui:ui:${ui_version}"
+            const val ui_tooling = "androidx.compose.ui:ui-tooling-preview:${ui_version}"
+            const val material = "androidx.compose.material:material:${ui_version}"
+            const val navigation = "androidx.navigation:navigation-compose:${navigation_version}"
+        }
+
+        object Navigation {
+            private const val version = "1.0.0"
+
+            const val navigation = "androidx.hilt:hilt-navigation-compose:${version}"
+        }
+    }
+
+    object Hilt {
+        private const val version = "2.41"
+
+        const val android = "com.google.dagger:hilt-android:$version"
+        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
+    }
 }

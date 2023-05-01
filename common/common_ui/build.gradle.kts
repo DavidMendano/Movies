@@ -1,3 +1,5 @@
+import com.dmendano.com.buildsrc.Libs
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -45,10 +47,10 @@ android {
 }
 
 dependencies {
-    implementation(Compose.compose_ui)
-    implementation(Compose.compose_ui_tooling)
-    implementation(Compose.compose_material)
-    implementation(Compose.compose_navigation)
+    implementation(Libs.AndroidX.Compose.ui)
+    implementation(Libs.AndroidX.Compose.ui_tooling)
+    implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.navigation)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

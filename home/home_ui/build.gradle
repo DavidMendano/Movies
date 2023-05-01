@@ -1,6 +1,10 @@
+import com.dmendano.com.buildsrc.Libs
+
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -42,14 +46,20 @@ android {
 }
 
 dependencies {
-    implementation AndroidX.androidx_core
-    implementation AndroidX.androidx_lifecycle
-    implementation AndroidX.androidx_activity
+    implementation Libs.AndroidX.androidx_core
+    implementation Libs.AndroidX.Activity.activity
 
-    implementation Compose.compose_ui
-    implementation Compose.compose_ui_tooling
-    implementation Compose.compose_material
-    implementation Compose.compose_navigation
+    implementation Libs.AndroidX.Lifecycle.lifecycle
+    implementation Libs.AndroidX.Lifecycle.viewmodelKtx
+
+    implementation Libs.AndroidX.Compose.ui
+    implementation Libs.AndroidX.Compose.ui_tooling
+    implementation Libs.AndroidX.Compose.material
+    implementation Libs.AndroidX.Compose.navigation
+
+    implementation Libs.AndroidX.Navigation.navigation
+    implementation Libs.Hilt.android
+    kapt Libs.Hilt.compiler
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
