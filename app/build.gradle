@@ -51,8 +51,10 @@ android {
 }
 
 dependencies {
-    implementation project(":home:home_ui")
     implementation project(":common:common_ui")
+    implementation project(":home:home_ui")
+    implementation project(":home:home_data")
+    implementation project(":home:home_domain")
 
     implementation Libs.AndroidX.androidx_core
     implementation Libs.AndroidX.Activity.activity
@@ -68,6 +70,12 @@ dependencies {
     implementation Libs.AndroidX.Navigation.navigation
     implementation Libs.Hilt.android
     kapt Libs.Hilt.compiler
+
+    implementation Libs.OkHttp3.loginInterceptor
+    implementation Libs.OkHttp3.mockWebServer
+
+    implementation Libs.Retrofit.retrofit
+    implementation Libs.Retrofit.converterGson
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
