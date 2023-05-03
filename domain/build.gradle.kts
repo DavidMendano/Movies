@@ -13,4 +13,5 @@ java {
 dependencies {
     implementation(Libs.JavaX.javax)
     implementation(Libs.Retrofit.converterGson)
+    implementation(Libs.Kotlin.Coroutines.core)
 }

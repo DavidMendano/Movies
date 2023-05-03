@@ -1,12 +1,7 @@
-package com.dmendano.data.models
+package com.dmendano.domain.models
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity
-data class MovieModel(
-
-    @PrimaryKey(autoGenerate = true) val id: Int,
+data class MovieUiModel(
+    val id: Int,
 
     val overview: String,
 

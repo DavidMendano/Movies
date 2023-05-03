@@ -6,6 +6,7 @@ import com.dmendano.data.local.MoviesLocalDataSource
 import com.dmendano.data.remote.MoviesService
 import com.dmendano.data.repositories.MoviesRepositoryImpl
 import com.dmendano.domain.repositories.MoviesRepository
+import com.dmendano.common.R
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,14 +38,14 @@ object NetworkModule {
     @Provides
     @Singleton
     @com.dmendano.data.di.ApiKey
-    fun provideApiKey(app: Application): String = "428f5001894ce61ed09cfd9f2c4f8aef"
+    fun provideApiKey(app: Application): String = app.getString(R.string.api_key)
 
     @Provides
     @Singleton
     fun providesRemoteService(
         @ApiUrl apiUrl: String,
         okHttpClient: OkHttpClient
-    ): com.dmendano.data.remote.MoviesService =
+    ): MoviesService =
         Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(okHttpClient)

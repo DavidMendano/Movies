@@ -2,62 +2,37 @@ package com.dmendano.domain.models
 
 import com.google.gson.annotations.SerializedName
 
-data class MoviesApiModel(
-
-    @SerializedName("page")
-	val page: Int? = null,
-
-    @SerializedName("total_pages")
-	val totalPages: Int? = null,
-
-    @SerializedName("results")
-	val results: List<MovieApiModel?>? = null,
-
-    @SerializedName("total_results")
-	val totalResults: Int? = null
-)
-
 data class MovieApiModel(
 
-	@SerializedName("overview")
-	val overview: String? = null,
+    @SerializedName("id")
+    val id: Int,
 
-	@SerializedName("original_language")
-	val originalLanguage: String? = null,
+    @SerializedName("overview")
+    val overview: String,
 
-	@SerializedName("original_title")
-	val originalTitle: String? = null,
+    @SerializedName("release_date")
+    val releaseDate: String,
 
-	@SerializedName("video")
-	val video: Boolean? = null,
+    @SerializedName("poster_path")
+    val posterPath: String,
 
-	@SerializedName("title")
-	val title: String? = null,
+    @SerializedName("backdrop_path")
+    val backdropPath: String,
 
-	@SerializedName("genre_ids")
-	val genreIds: List<Int?>? = null,
+    @SerializedName("original_language")
+    val originalLanguage: String,
 
-	@SerializedName("poster_path")
-	val posterPath: String? = null,
+    @SerializedName("original_title")
+    val originalTitle: String,
 
-	@SerializedName("backdrop_path")
-	val backdropPath: String? = null,
+    @SerializedName("title")
+    val title: String,
 
-	@SerializedName("release_date")
-	val releaseDate: String? = null,
+    @SerializedName("popularity")
+    val popularity: Double,
 
-	@SerializedName("popularity")
-	val popularity: Any? = null,
+    @SerializedName("vote_average")
+    val voteAverage: Double,
 
-	@SerializedName("vote_average")
-	val voteAverage: Any? = null,
-
-	@SerializedName("id")
-	val id: Int? = null,
-
-	@SerializedName("adult")
-	val adult: Boolean? = null,
-
-	@SerializedName("vote_count")
-	val voteCount: Int? = null
+    val favourite: Boolean = false
 )

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dmendano.core"
+    namespace = "com.dmendano.common"
     compileSdk = 33
 
     defaultConfig {
