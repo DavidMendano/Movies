@@ -1,4 +1,4 @@
-package com.dmendano.movies
+package com.dmendano.movies.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
@@ -12,9 +12,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.dmendano.home_ui.FavouritesScreen
-import com.dmendano.home_ui.HomeScreen
-import com.dmendano.home_ui.SearchScreen
+import com.dmendano.feature.ui.FavouritesScreen
+import com.dmendano.feature.ui.HomeScreen
+import com.dmendano.feature.ui.SearchScreen
 import com.dmendano.movies.navigation.BottomNavigationScreen
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

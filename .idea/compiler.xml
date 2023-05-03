@@ -2,7 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
+      <module name="Movies.common.common_data" target="11" />
+      <module name="Movies.common.common_ui" target="11" />
       <module name="Movies.common.common_utils" target="11" />
+      <module name="Movies.home.home_data" target="1.8" />
+      <module name="Movies.home.home_data.main" target="1.8" />
+      <module name="Movies.home.home_data.test" target="1.8" />
+      <module name="Movies.home.home_domain" target="1.8" />
+      <module name="Movies.home.home_domain.main" target="1.8" />
+      <module name="Movies.home.home_domain.test" target="1.8" />
+      <module name="Movies.home.home_ui" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

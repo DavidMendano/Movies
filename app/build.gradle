@@ -51,10 +51,10 @@ android {
 }
 
 dependencies {
-    implementation project(":common:common_ui")
-    implementation project(":home:home_ui")
-    implementation project(":home:home_data")
-    implementation project(":home:home_domain")
+    implementation project(":feature")
+    implementation project(":common")
+    implementation project(":data")
+    implementation project(":domain")
 
     implementation Libs.AndroidX.androidx_core
     implementation Libs.AndroidX.Activity.activity

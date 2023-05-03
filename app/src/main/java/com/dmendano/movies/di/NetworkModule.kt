@@ -1,11 +1,11 @@
 package com.dmendano.movies.di
 
 import android.app.Application
-import com.dmendano.common_ui.R
-import com.dmendano.home_data.di.ApiKey
-import com.dmendano.home_data.remote.MoviesService
-import com.dmendano.home_data.repositories.MoviesRepositoryImpl
-import com.dmendano.home_domain.repositories.MoviesRepository
+import com.dmendano.data.di.ApiKey
+import com.dmendano.data.local.MoviesLocalDataSource
+import com.dmendano.data.remote.MoviesService
+import com.dmendano.data.repositories.MoviesRepositoryImpl
+import com.dmendano.domain.repositories.MoviesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,12 +36,15 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    @ApiKey
-    fun provideApiKey(app: Application): String = app.getString(R.string.api_key)
+    @com.dmendano.data.di.ApiKey
+    fun provideApiKey(app: Application): String = "428f5001894ce61ed09cfd9f2c4f8aef"
 
     @Provides
     @Singleton
-    fun providesRemoteService(@ApiUrl apiUrl: String, okHttpClient: OkHttpClient): MoviesService =
+    fun providesRemoteService(
+        @ApiUrl apiUrl: String,
+        okHttpClient: OkHttpClient
+    ): com.dmendano.data.remote.MoviesService =
         Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(okHttpClient)
@@ -51,7 +54,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesMoviesRepository(@ApiKey apiKey: String, service: MoviesService): MoviesRepository {
-        return MoviesRepositoryImpl(apiKey, service)
+    fun providesMoviesRepository(
+        @ApiKey apiKey: String,
+        service: MoviesService,
+        localDataSource: MoviesLocalDataSource
+    ): MoviesRepository {
+        return MoviesRepositoryImpl(apiKey, service, localDataSource)
     }
 }

@@ -1,6 +1,20 @@
 package com.dmendano.com.buildsrc
 
 object Libs {
+
+    object Kotlin {
+        private const val version = "1.6.10"
+
+        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
+
+        object Coroutines {
+            private const val version = "1.6.0"
+
+            const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+            const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+        }
+    }
+
     object AndroidX {
         private const val core_version = "1.10.0"
 
@@ -32,6 +46,14 @@ object Libs {
             private const val version = "1.0.0"
 
             const val navigation = "androidx.hilt:hilt-navigation-compose:${version}"
+        }
+
+        object Room {
+            private const val version = "2.4.2"
+
+            const val runtime = "androidx.room:room-runtime:$version"
+            const val ktx = "androidx.room:room-ktx:$version"
+            const val compiler = "androidx.room:room-compiler:$version"
         }
     }
 
