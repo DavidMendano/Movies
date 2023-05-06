@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
 
-    val popularMovies: Flow<List<MovieUiModel>>
+    suspend fun getPopularMovies(): Flow<List<MovieUiModel>>
 
     suspend fun requestPopularMovies(region: String)
 }

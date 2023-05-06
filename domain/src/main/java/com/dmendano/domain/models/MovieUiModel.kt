@@ -22,4 +22,6 @@ data class MovieUiModel(
     val voteAverage: Double,
 
     val favourite: Boolean
-)
+) {
+    val urlImage = "https://image.tmdb.org/t/p/w500$posterPath"
+}

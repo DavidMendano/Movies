@@ -12,8 +12,8 @@ class MoviesRoomDataSource @Inject constructor(
     private val moviesDao: MoviesDao
 ) : MoviesLocalDataSource {
 
-    override val movies: Flow<List<MovieApiModel>>
-        get() = moviesDao.getAll().map { it.toDomainModel() }
+    override suspend fun getMovies(): Flow<List<MovieApiModel>> =
+        moviesDao.getAll().map { it.toDomainModel() }
 
     override suspend fun insertAll(movies: List<MovieApiModel>) {
         moviesDao.insertMovies(movies.fromDomainModel())

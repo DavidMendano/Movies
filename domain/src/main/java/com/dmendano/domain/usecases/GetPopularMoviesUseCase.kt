@@ -9,5 +9,5 @@ class GetPopularMoviesUseCase @Inject constructor(
     private val repository: MoviesRepository
 ) {
 
-    operator fun invoke(): Flow<List<MovieUiModel>> = repository.popularMovies
+    suspend operator fun invoke(): Flow<List<MovieUiModel>> = repository.getPopularMovies()
 }

@@ -51,7 +51,9 @@ android {
 }
 
 dependencies {
-    implementation project(":feature")
+    implementation project(':feature_home')
+    implementation project(':feature_favourites')
+    implementation project(':feature_search')
     implementation project(":common")
     implementation project(":data")
     implementation project(":domain")

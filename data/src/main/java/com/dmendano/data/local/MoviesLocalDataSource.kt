@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesLocalDataSource {
 
-    val movies: Flow<List<MovieApiModel>>
+    suspend fun getMovies(): Flow<List<MovieApiModel>>
 
     suspend fun insertAll(movies: List<MovieApiModel>)
 }

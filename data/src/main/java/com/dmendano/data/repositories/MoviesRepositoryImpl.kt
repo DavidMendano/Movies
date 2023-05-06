@@ -5,7 +5,9 @@ import com.dmendano.data.local.MoviesLocalDataSource
 import com.dmendano.data.remote.MoviesService
 import com.dmendano.domain.mappers.toUiModel
 import com.dmendano.domain.repositories.MoviesRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 class MoviesRepositoryImpl(
     @ApiKey private val apiKey: String,
@@ -13,7 +15,9 @@ class MoviesRepositoryImpl(
     private val localDataSource: MoviesLocalDataSource
 ) : MoviesRepository {
 
-    override val popularMovies get() = localDataSource.movies.map { it.toUiModel() }
+    override suspend fun getPopularMovies() = withContext(Dispatchers.IO) {
+        localDataSource.getMovies().map { it.toUiModel() }
+    }
 
     override suspend fun requestPopularMovies(region: String) {
         service.getPopularMovies(apiKey, region).also { movies ->

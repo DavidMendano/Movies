@@ -16,36 +16,38 @@ object Libs {
     }
 
     object AndroidX {
-        private const val core_version = "1.10.0"
+        private const val core_version = "1.9.0"
 
-        const val androidx_core = "androidx.core:core-ktx:${core_version}"
+        const val androidx_core = "androidx.core:core-ktx:$core_version"
+
         object Activity {
             private const val version = "1.7.1"
 
-            const val activity = "androidx.activity:activity-compose:${version}"
+            const val activity = "androidx.activity:activity-compose:$version"
         }
 
         object Lifecycle {
             private const val version = "2.6.1"
 
             const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
-            const val lifecycle =  "androidx.lifecycle:lifecycle-runtime-ktx:${version}"
+            const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
         }
 
         object Compose {
             private const val ui_version = "1.4.2"
             private const val navigation_version = "2.5.3"
 
-            const val ui = "androidx.compose.ui:ui:${ui_version}"
-            const val ui_tooling = "androidx.compose.ui:ui-tooling-preview:${ui_version}"
-            const val material = "androidx.compose.material:material:${ui_version}"
-            const val navigation = "androidx.navigation:navigation-compose:${navigation_version}"
+            const val ui = "androidx.compose.ui:ui:$ui_version"
+            const val debug_ui = "androidx.compose.ui:ui-tooling:$ui_version"
+            const val ui_tooling = "androidx.compose.ui:ui-tooling-preview:$ui_version"
+            const val material = "androidx.compose.material:material:$ui_version"
+            const val navigation = "androidx.navigation:navigation-compose:$navigation_version"
         }
 
         object Navigation {
             private const val version = "1.0.0"
 
-            const val navigation = "androidx.hilt:hilt-navigation-compose:${version}"
+            const val navigation = "androidx.hilt:hilt-navigation-compose:$version"
         }
 
         object Room {
@@ -82,5 +84,11 @@ object Libs {
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
+    }
+
+    object Coil {
+        private const val version = "2.3.0"
+
+        const val coil = "io.coil-kt:coil-compose:$version"
     }
 }

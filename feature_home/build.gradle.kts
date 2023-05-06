@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dmendano.feature"
+    namespace = "com.dmendano.feature_home"
     compileSdk = 33
 
     defaultConfig {
@@ -56,8 +56,11 @@ dependencies {
     implementation(Libs.AndroidX.Compose.ui_tooling)
     implementation(Libs.AndroidX.Compose.material)
     implementation(Libs.AndroidX.Compose.navigation)
+    debugImplementation(Libs.AndroidX.Compose.debug_ui)
 
     implementation(Libs.AndroidX.Navigation.navigation)
+
+    implementation(Libs.Coil.coil)
 
     implementation(Libs.Hilt.android)
     kapt(Libs.Hilt.compiler)
