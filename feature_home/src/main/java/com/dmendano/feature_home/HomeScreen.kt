@@ -1,23 +1,24 @@
 package com.dmendano.feature_home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -34,13 +35,13 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
     val movies by viewModel.movies.collectAsState(initial = listOf())
     LazyVerticalGrid(columns = GridCells.Fixed(2)) {
         items(movies) { movie ->
-            MovieItem(movie = movie)
+            MovieItem(movie = movie) { viewModel.onLikeClicked(movie) }
         }
     }
 }
 
 @Composable
-fun MovieItem(movie: MovieUiModel) {
+fun MovieItem(movie: MovieUiModel, onLikeClicked: () -> Unit) {
     Card(
         Modifier
             .fillMaxWidth(0.5f)
@@ -48,43 +49,78 @@ fun MovieItem(movie: MovieUiModel) {
             .padding(8.dp),
         elevation = 4.dp
     ) {
-        AsyncImage(
-            model = movie.urlImage,
-            contentDescription = "Image",
-            contentScale = ContentScale.Crop
-        )
-        Box(
-            modifier = Modifier
-                .background(
-                    Brush.verticalGradient(
-                        listOf(
-                            Color.Transparent,
-                            Color.Black
-                        ),
-                        startY = 300f
-                    )
-                )
-                .padding(bottom = 12.dp),
-            contentAlignment = Alignment.BottomCenter
-        ) {
-            Text(
-                text = movie.title,
-                modifier = Modifier.padding(8.dp),
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
+        Box(modifier = Modifier.fillMaxSize()) {
+            MovieImage(movie.urlImage)
+            MovieDetails(movie, onLikeClicked)
         }
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFFFFF, heightDp = 300, widthDp = 300)
+@Composable
+fun MovieImage(urlImage: String) {
+    AsyncImage(
+        model = urlImage,
+        contentDescription = "Image",
+        contentScale = ContentScale.Crop
+    )
+}
+
+@Composable
+private fun MovieDetails(movie: MovieUiModel, onLikeClicked: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    listOf(
+                        Color.Transparent,
+                        Color.Black
+                    ),
+                    startY = 300f
+                )
+            )
+            .padding(bottom = 12.dp),
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        MovieLike(movie, onLikeClicked)
+        MovieTitle(movie)
+    }
+}
+
+@Composable
+private fun MovieLike(movie: MovieUiModel, onLikeClicked: () -> Unit) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+        val iconColor = ColorFilter.tint(if (movie.favourite) Color.Red else Color.White)
+        Image(
+            modifier = Modifier
+                .padding(8.dp)
+                .clickable(onClick = onLikeClicked),
+            imageVector = Icons.Filled.Favorite,
+            contentDescription = "Favourite",
+            colorFilter = iconColor,
+            alignment = Alignment.Center,
+        )
+    }
+}
+
+@Composable
+private fun MovieTitle(movie: MovieUiModel) {
+    Text(
+        text = movie.title,
+        modifier = Modifier.padding(8.dp),
+        textAlign = TextAlign.Center,
+        color = Color.White,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Bold,
+        maxLines = 2,
+        overflow = TextOverflow.Ellipsis
+    )
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFFF, heightDp = 1000, widthDp = 500)
 @Composable
 fun MyPreview() {
-    MovieItem(fakeModel)
+    MovieItem(fakeModel) { }
 }
 
 private val fakeModel = MovieUiModel(

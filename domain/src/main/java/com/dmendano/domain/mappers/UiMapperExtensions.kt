@@ -17,5 +17,5 @@ fun MovieApiModel.toUiModel(): MovieUiModel =
         title = title,
         popularity = popularity,
         voteAverage = voteAverage,
-        favourite = false
+        favourite = favourite
     )
