@@ -12,9 +12,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.dmendano.feature_home.FavouritesScreen
-import com.dmendano.feature_home.HomeScreen
+import com.dmendano.feature_favourites.FavouritesScreen
 import com.dmendano.feature_home.SearchScreen
+import com.dmendano.feature_home.ui.HomeScreen
 import com.dmendano.movies.navigation.BottomNavigationScreen
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

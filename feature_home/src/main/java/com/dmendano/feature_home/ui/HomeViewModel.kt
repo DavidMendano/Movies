@@ -1,4 +1,4 @@
-package com.dmendano.feature_home
+package com.dmendano.feature_home.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

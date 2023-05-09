@@ -33,11 +33,22 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.0"
+    }
 }
 
 dependencies {
     implementation(Libs.AndroidX.androidx_core)
+    implementation(Libs.AndroidX.Compose.ui)
     implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.ui_tooling)
+    implementation(Libs.AndroidX.Compose.debug_ui)
+
+    implementation(Libs.Coil.coil)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

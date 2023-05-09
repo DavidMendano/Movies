@@ -8,6 +8,7 @@ import com.dmendano.domain.mappers.toUiModel
 import com.dmendano.domain.models.MovieUiModel
 import com.dmendano.domain.repositories.MoviesRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -20,6 +21,9 @@ class MoviesRepositoryImpl(
     override suspend fun getPopularMovies() = withContext(Dispatchers.IO) {
         localDataSource.getMovies().map { it.toUiModel() }
     }
+
+    override suspend fun getFavouritesMovies(): Flow<List<MovieUiModel>> =
+        localDataSource.getFavourites().map { it.toUiModel() }
 
     override suspend fun requestPopularMovies(region: String) {
         if (localDataSource.getMoviesCount() <= 0) {

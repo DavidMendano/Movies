@@ -16,6 +16,9 @@ class MoviesRoomDataSource @Inject constructor(
     override suspend fun getMovies(): Flow<List<MovieApiModel>> =
         moviesDao.getAll().map { it.toDomainModel() }
 
+    override suspend fun getFavourites(): Flow<List<MovieApiModel>> =
+        moviesDao.getFavourites().map { it.toDomainModel() }
+
     override suspend fun insertAll(movies: List<MovieApiModel>) {
         moviesDao.insertMovies(movies.fromDomainModel())
     }
@@ -23,4 +26,6 @@ class MoviesRoomDataSource @Inject constructor(
     override suspend fun updateMovie(movie: MovieModel) {
         moviesDao.insertMovie(movie)
     }
+
+    override suspend fun getMoviesCount(): Int = moviesDao.moviesCount()
 }

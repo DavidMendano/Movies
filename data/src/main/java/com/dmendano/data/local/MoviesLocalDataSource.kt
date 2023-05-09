@@ -8,7 +8,11 @@ interface MoviesLocalDataSource {
 
     suspend fun getMovies(): Flow<List<MovieApiModel>>
 
+    suspend fun getFavourites(): Flow<List<MovieApiModel>>
+
     suspend fun insertAll(movies: List<MovieApiModel>)
 
     suspend fun updateMovie(movie: MovieModel)
+
+    suspend fun getMoviesCount(): Int
 }

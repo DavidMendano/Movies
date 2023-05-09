@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":common"))
 
     implementation(com.dmendano.com.buildsrc.Libs.AndroidX.androidx_core)
     implementation(com.dmendano.com.buildsrc.Libs.AndroidX.Activity.activity)

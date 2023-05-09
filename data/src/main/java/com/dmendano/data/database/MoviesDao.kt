@@ -13,11 +13,14 @@ interface MoviesDao {
     @Query("SELECT * FROM MovieModel")
     fun getAll(): Flow<List<MovieModel>>
 
+    @Query("SELECT * FROM MovieModel WHERE favourite = :isFavourite")
+    fun getFavourites(isFavourite: Boolean = true): Flow<List<MovieModel>>
+
     @Query("SELECT * FROM MovieModel WHERE id = :id")
     fun findById(id: Int): Flow<MovieModel>
 
     @Query("SELECT COUNT(id) FROM MovieModel")
-    suspend fun movieCount(): Int
+    suspend fun moviesCount(): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovies(movies: List<MovieModel>)

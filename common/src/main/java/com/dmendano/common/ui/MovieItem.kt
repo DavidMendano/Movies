@@ -1,19 +1,14 @@
-package com.dmendano.feature_home
+package com.dmendano.common.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -26,22 +21,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.dmendano.domain.models.MovieUiModel
+import com.dmendano.common.model.MovieItemUiModel
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
-    val movies by viewModel.movies.collectAsState(initial = listOf())
-    LazyVerticalGrid(columns = GridCells.Fixed(2)) {
-        items(movies) { movie ->
-            MovieItem(movie = movie) { viewModel.onLikeClicked(movie) }
-        }
-    }
-}
-
-@Composable
-fun MovieItem(movie: MovieUiModel, onLikeClicked: () -> Unit) {
+fun MovieItem(movie: MovieItemUiModel, onLikeClicked: () -> Unit) {
     Card(
         Modifier
             .fillMaxWidth(0.5f)
@@ -66,7 +50,7 @@ fun MovieImage(urlImage: String) {
 }
 
 @Composable
-private fun MovieDetails(movie: MovieUiModel, onLikeClicked: () -> Unit) {
+private fun MovieDetails(movie: MovieItemUiModel, onLikeClicked: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -88,7 +72,7 @@ private fun MovieDetails(movie: MovieUiModel, onLikeClicked: () -> Unit) {
 }
 
 @Composable
-private fun MovieLike(movie: MovieUiModel, onLikeClicked: () -> Unit) {
+private fun MovieLike(movie: MovieItemUiModel, onLikeClicked: () -> Unit) {
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
         val iconColor = ColorFilter.tint(if (movie.favourite) Color.Red else Color.White)
         Image(
@@ -104,7 +88,7 @@ private fun MovieLike(movie: MovieUiModel, onLikeClicked: () -> Unit) {
 }
 
 @Composable
-private fun MovieTitle(movie: MovieUiModel) {
+private fun MovieTitle(movie: MovieItemUiModel) {
     Text(
         text = movie.title,
         modifier = Modifier.padding(8.dp),
@@ -123,17 +107,9 @@ fun MyPreview() {
     MovieItem(fakeModel) { }
 }
 
-private val fakeModel = MovieUiModel(
+private val fakeModel = MovieItemUiModel(
     0,
     "",
-    "",
-    "",
-    "",
     "Spider-man",
-    "Spider-man",
-    "Spiderman",
-    7.0,
-    7.0,
     true
 )
-

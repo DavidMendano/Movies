@@ -45,6 +45,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":common"))
 
     implementation(Libs.AndroidX.androidx_core)
     implementation(Libs.AndroidX.Activity.activity)
@@ -59,8 +60,6 @@ dependencies {
     debugImplementation(Libs.AndroidX.Compose.debug_ui)
 
     implementation(Libs.AndroidX.Navigation.navigation)
-
-    implementation(Libs.Coil.coil)
 
     implementation(Libs.Hilt.android)
     kapt(Libs.Hilt.compiler)
